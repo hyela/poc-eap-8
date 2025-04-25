@@ -1,159 +1,69 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-	
-	<modelVersion>4.0.0</modelVersion>
-	<groupId>com.fedecafe</groupId>
-	<artifactId>poc-eap-8</artifactId>
-	<version>1.0.0</version>
-	<packaging>war</packaging>
-	<name>SOAP WebService</name>
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
-	<properties>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<maven.compiler.source>17</maven.compiler.source>
-		<maven.compiler.target>17</maven.compiler.target>
-		<version.jakartaee>10.0.0</version.jakartaee>
-		<version.jboss.eap>8.0.0.GA</version.jboss.eap>
-		<version.cxf>4.0.0.redhat-00002</version.cxf>
-	</properties>
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.fedecafe</groupId>
+    <artifactId>poc-eap-8</artifactId>
+    <version>1.0.0</version>
+    <packaging>war</packaging>
+    <name>SOAP WebService</name>
 
-	<dependencies>
-		<!-- Jakarta EE 10 Core API -->
-		<dependency>
-			<groupId>jakarta.platform</groupId>
-			<artifactId>jakarta.jakartaee-api</artifactId>
-			<version>${version.jakartaee}</version>
-			<scope>provided</scope>
-		</dependency>
-		
-		<dependency>
-		    <groupId>jakarta.xml.bind</groupId>
-		    <artifactId>jakarta.xml.bind-api</artifactId>
-		    <version>4.0.0.redhat-00001</version>
-		    <scope>provided</scope>
-		</dependency>
-		
-		<!-- JAX-WS específico para JBoss EAP 8 -->
-		<dependency>
-			<groupId>org.jboss.ws</groupId>
-			<artifactId>jbossws-api</artifactId>
-			<version>3.0.0.Final-redhat-00001</version>
-			<scope>provided</scope>
-		</dependency>
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
+        <version.jakartaee>10.0.0</version.jakartaee>
+        <version.jboss.eap>8.0.0.GA</version.jboss.eap>
+    </properties>
 
-		<!-- CXF para JBoss EAP 8 -->
-		<dependency>
-			<groupId>org.jboss.ws.cxf</groupId>
-			<artifactId>jbossws-cxf-client</artifactId>
-			<version>7.0.0.Final-redhat-00001</version>
-			<scope>provided</scope>
-	        <exclusions>
-	            <exclusion>
-	                <groupId>javax.xml.bind</groupId>
-	                <artifactId>jaxb-api</artifactId>
-	            </exclusion>
-	            <exclusion>
-	                <groupId>com.sun.istack</groupId>
-	                <artifactId>istack-commons-runtime</artifactId>
-	            </exclusion>
-	            <exclusion>
-	                <groupId>com.sun.xml.fastinfoset</groupId>
-	                <artifactId>FastInfoset</artifactId>
-	            </exclusion>
-	        </exclusions>
-		</dependency>
+    <dependencies>
+        <dependency>
+            <groupId>jakarta.platform</groupId>
+            <artifactId>jakarta.jakartaee-api</artifactId>
+            <version>${version.jakartaee}</version>
+            <scope>provided</scope>
+        </dependency>
 
-		<!-- Implementación de JAX-WS -->
-		<dependency>
-			<groupId>org.jboss.ws.cxf</groupId>
-			<artifactId>jbossws-cxf-server</artifactId>
-			<version>7.0.0.Final-redhat-00001</version>
-			<scope>provided</scope>
-	        <exclusions>
-	            <exclusion>
-	                <groupId>javax.xml.bind</groupId>
-	                <artifactId>jaxb-api</artifactId>
-	            </exclusion>
-	            <exclusion>
-	                <groupId>com.sun.istack</groupId>
-	                <artifactId>istack-commons-runtime</artifactId>
-	            </exclusion>
-	            <exclusion>
-	                <groupId>com.sun.xml.fastinfoset</groupId>
-	                <artifactId>FastInfoset</artifactId>
-	            </exclusion>
-	        </exclusions>
-		</dependency>
-	</dependencies>
+        <dependency>
+            <groupId>jakarta.xml.bind</groupId>
+            <artifactId>jakarta.xml.bind-api</artifactId>
+            <version>4.0.0.redhat-00001</version>
+            <scope>provided</scope>
+        </dependency>
+    </dependencies>
 
-	<build>
-		<finalName>soap-service</finalName>
-		<plugins>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-war-plugin</artifactId>
-				<version>3.3.2</version>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<version>3.11.0</version>
-				<configuration>
-					<release>17</release>
-				</configuration>
-			</plugin>
-		</plugins>
-	</build>
+    <build>
+        <finalName>soap-service</finalName>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>3.3.2</version>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.11.0</version>
+                <configuration>
+                    <release>17</release>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 
-	<repositories>
-		<repository>
-			<releases>
-				<enabled>true</enabled>
-				<updatePolicy>never</updatePolicy>
-			</releases>
-			<snapshots>
-				<enabled>false</enabled>
-			</snapshots>
-			<id>fuse-public-repository</id>
-			<name>FuseSource Community Release Repository</name>
-			<url>https://repo.fusesource.com/nexus/content/groups/public</url>
-		</repository>
-		<repository>
-			<releases>
-				<enabled>true</enabled>
-				<updatePolicy>never</updatePolicy>
-			</releases>
-			<snapshots>
-				<enabled>false</enabled>
-			</snapshots>
-			<id>red-hat-ga-repository</id>
-			<name>Red Hat GA Repository</name>
-			<url>https://maven.repository.redhat.com/ga</url>
-		</repository>
-		<repository>
-			<releases>
-				<enabled>true</enabled>
-				<updatePolicy>never</updatePolicy>
-			</releases>
-			<snapshots>
-				<enabled>false</enabled>
-			</snapshots>
-			<id>red-hat-ea-repository</id>
-			<name>Red Hat EA Repository</name>
-			<url>https://maven.repository.redhat.com/earlyaccess/all</url>
-		</repository>
-		<repository>
-			<releases>
-				<enabled>true</enabled>
-				<updatePolicy>never</updatePolicy>
-			</releases>
-			<snapshots>
-				<enabled>false</enabled>
-			</snapshots>
-			<id>jboss-ea-repository</id>
-			<name>Red Hat JBoss Early Access Repository</name>
-			<url>http://repository.jboss.org/nexus/content/groups/ea</url>
-		</repository>
-	</repositories>
+    <repositories>
+        <repository>
+            <releases>
+                <enabled>true</enabled>
+                <updatePolicy>never</updatePolicy>
+            </releases>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+            <id>red-hat-ga-repository</id>
+            <name>Red Hat GA Repository</name>
+            <url>https://maven.repository.redhat.com/ga</url>
+        </repository>
+    </repositories>
 </project>
