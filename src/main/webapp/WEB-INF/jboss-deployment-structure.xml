@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jboss-deployment-structure>
+    <deployment>
+        <dependencies>
+            <module name="org.jboss.ws.cxf.jbossws-cxf-transports-undertow"/>
+            <module name="org.apache.cxf.impl"/>
+            <module name="org.jboss.ws.api"/>
+            <module name="org.jboss.wsf.stack.cxf"/>
+        </dependencies>
+        <exclusions>
+            <module name="org.apache.cxf"/>
+        </exclusions>
+    </deployment>
+</jboss-deployment-structure>
